@@ -1,0 +1,51 @@
+.box {
+  display: flex;
+  position: relative;
+}
+
+.indicator {
+  background-color: #70b838;
+  width: 30px;
+  height: 44px;
+  border-radius: 20px;
+  position: absolute;
+  left: -15px;
+  top: 0%;
+  transition: all 0.5s;
+}
+
+.menu {
+  max-width: 250px;
+  padding-left: 40px;
+
+  .list {
+    display: flex;
+    flex-direction: column;
+
+    .item {
+      padding: 10px 0;
+
+      &:first-child {
+        padding-top: 0;
+      }
+      &:last-child {
+        padding-bottom: 0;
+      }
+
+      a {
+        font-size: 16px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        width: max-content;
+        padding: 5px;
+
+        svg {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+  }
+}

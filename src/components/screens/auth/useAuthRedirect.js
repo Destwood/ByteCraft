@@ -8,7 +8,7 @@ export const useAuthRedirect = () => {
 
   useEffect(() => {
     if (user) {
-      navigate('home')
+      navigate('/home')
     }
   }, [user, navigate])
 }

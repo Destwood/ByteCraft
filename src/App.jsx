@@ -16,13 +16,14 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/catalog" element={<HomePage />} />
 
-          {!isAuth && (
+          {!isAuth ? (
             <>
               <Route path="/auth/login" element={<LoginPage />} />
               <Route path="/auth/register" element={<RegisterPage />} />
             </>
+          ) : (
+            <Route path="/auth/login" element={<Navigate to="/home" />} />
           )}
-
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
       </Layout>

@@ -1,4 +1,4 @@
-import classes from './Auth.module.scss'
+import classes from './FormElements.module.scss'
 
 const AuthField = ({ label, type, forId, register, error }) => {
   return (

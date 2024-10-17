@@ -1,5 +1,3 @@
-export const useAuth = () => {
-  const user = localStorage.getItem('user')
+import { useSelector } from 'react-redux'
 
-  return user || null
-}
+export const useAuth = () => useSelector(state => state.user.user)

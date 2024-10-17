@@ -1,16 +1,18 @@
-import classes from '../Auth.module.scss'
+import classes from './Auth.module.scss'
 
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
-import AuthButton from '../AuthButton'
-import AuthField from '../AuthField'
-import AuthTitle from '../AuthTitle'
-import { AuthService } from '../../../../services/auth/auth.service'
-import { useAuthRedirect } from '../useAuthRedirect'
+import AuthButton from '../../ui/form-elements/AuthButton'
+import AuthField from '../../ui/form-elements/AuthField'
+import AuthTitle from '../../ui/form-elements/AuthTitle'
+import { useAuthRedirect } from './useAuthRedirect'
+import { useActions } from '../../../hooks/useActions'
 
 const Register = () => {
   useAuthRedirect()
+
+  const { register: registerUser } = useActions()
 
   const {
     register,
@@ -20,8 +22,12 @@ const Register = () => {
     reset,
   } = useForm()
 
-  const onSubmit = async data => {
-    await AuthService.register(data.email, data.password, data.userName)
+  const onSubmit = data => {
+    registerUser({
+      email: data.email,
+      password: data.password,
+      userName: data.userName,
+    })
     reset()
   }
 

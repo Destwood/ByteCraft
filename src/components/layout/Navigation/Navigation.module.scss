@@ -1,6 +1,12 @@
 .box {
   display: flex;
   position: relative;
+  transition: all 0.3s;
+  left: 0;
+
+  &.hide {
+    display: none;
+  }
 }
 
 .indicator {

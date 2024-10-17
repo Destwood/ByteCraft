@@ -1,0 +1,31 @@
+.form {
+  background-color: #15151a;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  max-width: 730px;
+  width: 100%;
+  margin: 0 auto;
+  align-items: center;
+  padding: 35px;
+  border-radius: 30px;
+  margin-bottom: 50px;
+}
+
+.links {
+  text-align: center;
+
+  a {
+    color: #70b838;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #ccc;
+    }
+  }
+
+  > * {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+}

@@ -1,14 +1,27 @@
+import './assets/styles/reset.scss'
+import './assets/styles/globals.scss'
+import 'react-toastify/dist/ReactToastify.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import './assets/styles/reset.scss'
-import './assets/styles/globals.scss'
+import { Provider } from 'react-redux'
+import { store } from './store/store'
+import { ToastContainer } from 'react-toastify'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        closeOnClick
+        draggable
+        theme="dark"
+      ></ToastContainer>
+    </Provider>
   </React.StrictMode>
 )
 

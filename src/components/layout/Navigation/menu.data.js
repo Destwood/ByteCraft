@@ -5,22 +5,22 @@ export const menu = [
     title: 'Головна',
   },
   {
-    icon: 'MdExplore',
+    icon: 'MdCategory',
     link: '/catalog',
     title: 'Каталог товарів',
   },
   {
-    icon: 'MdRefresh',
+    icon: 'MdVolunteerActivism',
     link: '/donates',
     title: 'Донати',
   },
   {
-    icon: 'MdLocalFireDepartment',
+    icon: 'MdCheckCircle',
     link: '/successful-gatherings',
     title: 'Успішні збори',
   },
   {
-    icon: 'MdLocalFireDepartment',
+    icon: 'MdInfo',
     link: '/about-us',
     title: 'Про сайт',
   },

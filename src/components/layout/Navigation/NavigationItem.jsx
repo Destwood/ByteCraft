@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import * as MaterialIcons from 'react-icons/md'
 import classes from './Navigation.module.scss'
 
 const NavigationItem = ({ link, title, Icon, handleHover, handleLeave }) => {
+  const location = useLocation()
   const IconComponent = MaterialIcons[Icon]
 
   return (
@@ -12,7 +13,9 @@ const NavigationItem = ({ link, title, Icon, handleHover, handleLeave }) => {
       onMouseLeave={handleLeave}
     >
       <Link to={link}>
-        <IconComponent />
+        <IconComponent
+          color={location.pathname.includes(link) ? '#fff' : '#292932'}
+        />
         <p>{title}</p>
       </Link>
     </li>

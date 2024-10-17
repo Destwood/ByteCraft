@@ -76,7 +76,7 @@ const Home = () => {
               <img src={statisticIcon} alt="Icon" />
                 1024 учасників</h3>
 
-              <button className={classes["result"]}>
+              <button className={classes["result"]}>import Home from "../components/screens/home/Home"
                 Задонатити</button>
         </div>
         

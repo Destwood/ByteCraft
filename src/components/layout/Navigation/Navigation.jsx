@@ -1,6 +1,7 @@
 import { menu } from './menu.data'
 import NavigationItem from './NavigationItem'
 import classes from './Navigation.module.scss'
+import cn from 'classnames'
 import { useEffect, useRef } from 'react'
 
 import { useLocation } from 'react-router-dom'
@@ -25,12 +26,16 @@ const Navigation = () => {
     const currentPath = location.pathname
     const currentIndex = menu.findIndex(item => currentPath.includes(item.link))
     const defaultValue = currentIndex >= 0 ? currentIndex * 60 : 0
-    
+
     indicatorRef.current.style.top = `${defaultValue}px`
   }
 
   return (
-    <div className={classes.box}>
+    <div
+      className={cn(classes.box, {
+        [classes.hide]: location.pathname.includes('auth'),
+      })}
+    >
       <div ref={indicatorRef} className={classes.indicator}></div>
       <nav className={classes.menu}>
         <ul className={classes.list}>

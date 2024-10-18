@@ -1,0 +1,93 @@
+.container {
+  background-color: #15151a;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.mainInfo {
+  display: flex;
+  gap: 1rem;
+}
+.infoContainer {
+  width: 100%;
+}
+.updateImg {
+  background-color: #70b838;
+  color: #fff;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.infoHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info {
+  background-color: #242428;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.infoTitle {
+  font-size: 2rem;
+}
+
+.infoContent {
+  p:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
+
+.top {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #fff;
+}
+.middle {
+  border-bottom: 1px solid #fff;
+  padding: 1.5rem;
+}
+
+.bottom {
+  margin-top: 2rem;
+}
+
+.dontaionInfo {
+  display: flex;
+}
+.dontaionAmount {
+  border-right: 1px solid #fff;
+  padding: 1rem;
+}
+
+.dontaionAmount,
+.uahAmount {
+  text-align: center;
+  width: 100%;
+}
+
+.uahAmount {
+  padding: 1rem;
+}
+
+.donationTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.donationText {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.lastestTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+.latestList {
+  display: flex;
+  max-width: 70rem;
+  overflow-x: hidden;
+  gap: 2rem;
+}

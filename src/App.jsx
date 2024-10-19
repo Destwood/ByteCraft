@@ -7,8 +7,8 @@ import CatalogPage from "./pages/Catalog";
 import LoginPage from "./pages/Login";
 import RegisterPage from "./pages/Register";
 import FundraiserPage from "./pages/Fundraiser";
+import ProductPage from "./pages/Product";
 import { useAuth } from "./hooks/useAuth";
-
 
 function App() {
   const isAuth = useAuth();
@@ -27,7 +27,6 @@ function App() {
           <Route path="/profile" element={<Profile />} />
 
           <Route path="/product" element={<ProductPage />} />
-
 
           {!isAuth ? (
             <>

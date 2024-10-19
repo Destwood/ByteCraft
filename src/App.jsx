@@ -6,10 +6,8 @@ import Profile from './pages/Profile/Profile'
 import CatalogPage from './pages/Catalog'
 import LoginPage from './pages/Login'
 import RegisterPage from './pages/Register'
-import CatalogPage from './pages/Catalog'
-import LoginPage from './pages/Login'
-import RegisterPage from './pages/Register'
 import FundraiserPage from './pages/Fundraiser'
+import ProductPage from './pages/Product'
 import { useAuth } from './hooks/useAuth'
 
 function App() {
@@ -26,6 +24,8 @@ function App() {
           <Route path="/catalog" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/fundraiser" element={<FundraiserPage />} />
+          <Route path="/product" element={<ProductPage />} />
+
 
           {!isAuth ? (
             <>

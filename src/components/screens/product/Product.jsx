@@ -1,20 +1,13 @@
-import classes from "./Fundraiser.module.scss"
-import userAvatar from './user-avatar.svg'
-import ProgressBar from './ProgressBar';
-import statisticIcon from '../home/statistic-icon.svg'
-import copyIcon from './copy-icon.svg'
+import classes from "./Product.module.scss"
+import organizator from './organizator-photo.svg'
+import copyIcon from './copyIcon.svg'
+import locationMark from './locationMark.svg'
 import mastercard from './mastercard.svg'
 import visa from './visa.svg'
 import React, { useState, useEffect } from 'react';
 import Modal from '../../ui/modal/Modal'
 
-const Fundraiser=()=> {
-    const [progress, setProgress] = useState(50);
-
-    const increaseProgress = () => {
-        setProgress(prev => Math.min(prev + 10, 100));
-    };
-
+const Product=()=> {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalType, setModalType] = useState(null); // null, 'first', or 'second'
     const [selectedCard, setSelectedCard] = useState('');
@@ -49,7 +42,8 @@ const Fundraiser=()=> {
         setIsButtonDisabled(cardNumber.length !== 19);
     }, [cardNumber]);
 
-    return(<>
+    return(
+        <>
         {/* Modal: */}
         <Modal isOpen={isModalOpen} onClose={closeModal}>
             {modalType === 'first' ? (
@@ -57,7 +51,7 @@ const Fundraiser=()=> {
                 <h3 className={classes.title}>Завершити операцію</h3>
                 <div className={classes.userInfo}>
                 <img
-                    src={userAvatar} 
+                    src={organizator} 
                     alt="User"
                     className={classes.avatar}
                 />
@@ -129,92 +123,87 @@ const Fundraiser=()=> {
                 </div>
             }
         </Modal>
-        <div className={classes.container}>
-            <h2 className={classes.header}>Збір N</h2>
-
-            <div className={classes["image-block"]}>
-                <img alt="photo" className={classes["image-main"]}/>
+        <div className={classes.container}>  
+        {/* Main */}
+            <div className={classes.imageBlock}>
+                <img alt="photo" className={classes.imageMain}/>
                 <img alt="photo" className={classes.image}/>
                 <img alt="photo" className={classes.image}/>
                 <img alt="photo" className={classes.image}/>
             </div>
-            
-            <div className={classes["main-info"]}>
-                <h3 className={classes.title}>Деталі збору</h3>
 
-                <div className={classes["main-info-block"]}>
-                    <p>Зібрано, грн</p> <p>1000 / 10000</p>
-                </div>
+            <div className={classes.mainInfo}>
+                <h3 className={classes.name}>Товар 1</h3>
 
-                <ProgressBar progress={progress} />
-
-                <div className={classes["main-info-block"]}>
-                    <p>Дата завершення збору</p> <p className={classes.date}>10.10.2024</p>
-                </div>
-                <p className={classes.text}><img src={statisticIcon} alt="Icon" />1024 учасників</p>
-                <p> Організатор збору:</p>
-
-                <div className={classes["organizer-block"]}>
-                    <img src={userAvatar} className={classes["user-avatar"]} alt="Avatar" />
-                    <p className={classes["user-name"]}>Волонтер1</p>
+                <div className={classes.mainInfoBlock}>
+                    <p>Ціна:</p> <p>150 грн</p>
                 </div>
                 
+                <div className={classes.productCode}>Код товару: 111111</div>
+
+                <p> Поставщик:</p>
+
+                <div className={classes.organizator}>
+                    <img src={organizator} className={classes.organizator} alt="Avatar" />
+                    <p className={classes.organizatorName}>Поставщик1</p>
+                </div>
+
                 <div className={classes.mainInfoBlock}>
                 <button className={classes.send} onClick={() => openModal('second')}>Замовити</button>
                 <button className={classes.gpay} onClick={() => openModal('first')}/>
                 </div>
 
-                <p>Для поширення інформації про збір: </p>
+                <p>Поділитись: </p>
                 <button className={classes.copy}><img src={copyIcon} alt="Icon" />Скопіювати ссилку</button>
             </div>
 
-            <div className={classes.info}>
-                <h3 className={classes["sub-title"]}>Деталі про збір</h3>
-                <p className={classes["about-text"]}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at ex vitae risus sodales bibendum sed eget ipsum. Vestibulum dictum ante quis bibendum laoreet. Pellentesque vel dapibus massa, ac congue dolor. Donec mollis mauris eu sem laoreet, ac cursus dui egestas. Donec sit amet aliquam justo, sed luctus nisi. Vestibulum ullamcorper tellus tempus mattis bibendum.</p>
+             <div className={classes.info}>
+                <h3 className={classes.subTitle}>Опис товару</h3>
+                <p className={classes.aboutText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at ex vitae risus sodales bibendum sed eget ipsum. Vestibulum dictum ante quis bibendum laoreet. Pellentesque vel dapibus massa, ac congue dolor. Donec mollis mauris eu sem laoreet, ac cursus dui egestas. Donec sit amet aliquam justo, sed luctus nisi. Vestibulum ullamcorper tellus tempus mattis bibendum.</p>
             </div>
 
             <div className={classes.info}>
-                <h3 className={classes["sub-title"]}>Останні користувачі, які задонатили:</h3>
+                <h3 className={classes.subTitle}>Локації, де можна придбати товар:</h3>
 
-                <div className={classes.user}>
-                    <img src={userAvatar} className={classes["user-avatar"]} alt="Avatar" />
-
-                    <p className={classes["user-name"]}>  ВолонтерN</p>
-                    <p className={classes["user-sum"]}>100 грн</p>
+                <div className={classes.location}>
+                    <img src={locationMark} className={classes.locationMark} alt="Avatar" />
+                    <div className={classes.locationBlock}>
+                        <p className={classes.locationName}>Житомир</p>
+                        Вул. N, будинок M
+                    </div>
+                    <p  className={classes.locationSum}>200 грн</p>
                 </div>
 
-                 <div className={classes.user}>
-                    <img src={userAvatar} className={classes["user-avatar"]} alt="Avatar" />
-
-                    <p className={classes["user-name"]}>  ВолонтерN</p>
-                    <p className={classes["user-sum"]}>100 грн</p>
+                <div className={classes.location}>
+                    <img src={locationMark} className={classes.locationMark} alt="Avatar" />
+                    <div className={classes.locationBlock}>
+                        <p className={classes.locationName}>Житомир</p>
+                        Вул. N, будинок M
+                    </div>
+                    <p  className={classes.locationSum}>300 грн</p>
                 </div>
 
-                <div className={classes.user}>
-                    <img src={userAvatar} className={classes["user-avatar"]} alt="Avatar" />
-
-                    <p className={classes["user-name"]}>  ВолонтерN</p>
-                    <p className={classes["user-sum"]}>100 грн</p>
+                <div className={classes.location}>
+                    <img src={locationMark} className={classes.locationMark} alt="Avatar" />
+                    <div className={classes.locationBlock}>
+                        <p className={classes.locationName}>Житомир</p>
+                        Вул. N, будинок M
+                    </div>
+                    <p  className={classes.locationSum}>150 грн</p>
                 </div>
 
-                <div className={classes.user}>
-                    <img src={userAvatar} className={classes["user-avatar"]} alt="Avatar" />
-
-                    <p className={classes["user-name"]}>  ВолонтерN</p>
-                    <p className={classes["user-sum"]}>100 грн</p>
+                <div className={classes.location}>
+                    <img src={locationMark} className={classes.locationMark} alt="Avatar" />
+                    <div className={classes.locationBlock}>
+                        <p className={classes.locationName}>Житомир</p>
+                        Вул. N, будинок M
+                    </div>
+                    <p  className={classes.locationSum}>100 грн</p>
                 </div>
-                <div className={classes.user}>
-                    <img src={userAvatar} className={classes["user-avatar"]} alt="Avatar" />
-
-                    <p className={classes["user-name"]}>  ВолонтерN</p>
-                    <p className={classes["user-sum"]}>100 грн</p>
-                </div>
-                
-                
+                            
             </div>
 
         </div>
         </>
-    )
-}
-export default Fundraiser
+)}
+export default Product

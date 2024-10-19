@@ -1,3 +1,4 @@
+
 import Layout from './components/layout/Layout'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import HomePage from './pages/Home'
@@ -26,8 +27,14 @@ function App() {
 
           <Route path="/profile" element={<Profile />} />
 
+
           <Route path="/fundraiser/:id" element={<FundraiserPage />} />
           <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/product" element={<ProductPage />} />
+
+          <Route path="/create" element={<CreateFundPage />} />
+          <Route path="/report" element={<FundraiserReportPage />} />
+ 
 
           {!isAuth ? (
             <>

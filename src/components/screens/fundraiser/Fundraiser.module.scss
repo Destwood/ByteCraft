@@ -45,14 +45,33 @@
     border-radius: 16px;
     background: #242428;
     padding: 30px;
+    gap:10px;
 }
 .info{
     width: 47%;
-    height: 273px;
     border-radius: 16px;
     background: #242428;
     padding: 30px;
+    max-height: 273px;
+    overflow-y: scroll;
 }
+
+/* Стилізація скролбару */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Фонова частина скролбару */
+::-webkit-scrollbar-track {
+    background: #242428;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #70B838;
+    border-radius: 6px;
+    border: 3px solid #242428;
+}
+
 .title{
     font-weight: 700;
     font-size: 24px;
@@ -78,7 +97,7 @@
 }
 .user-name{
     font-weight: 700;
-    line-height: 171%;
+    line-height: 200%;
     text-transform: capitalize;
     padding-left: 20px;
 }
@@ -92,4 +111,55 @@
 .main-info-block{
     display: flex;
     justify-content: space-between;
+}
+.sum{
+    border: 2px solid #292932;
+    border-radius: 50px;
+    width: 402px;
+    height: 32px;
+    padding-left: 15px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 171%;
+    letter-spacing: 0.01em;
+}
+.send{
+    border-radius: 16px;
+    width: 100%;
+    height: 44px;
+    background: #70B838;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 133%;
+    color:#ffffff;
+}
+.send:hover{
+    background-color: #8BE346;
+    color: #fafafa;
+}
+.copy{
+    border-radius: 16px;
+    width: 100%;
+    height: 30px;
+    background:#ffffff;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 171%;
+    color: #000;
+}
+.copy:hover{
+    background: #aca8a9;
+}
+.text{
+    line-height: 171%;
+}
+.date{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 120%;
+    color: #70B838;
+}
+.organizer-block{
+    display: flex;
+    margin-left: 10px;
 }

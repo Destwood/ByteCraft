@@ -2,6 +2,10 @@ import Layout from './components/layout/Layout'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import HomePage from './pages/Home'
 import AboutPage from './pages/About'
+import Profile from './pages/Profile/Profile'
+import CatalogPage from './pages/Catalog'
+import LoginPage from './pages/Login'
+import RegisterPage from './pages/Register'
 import CatalogPage from './pages/Catalog'
 import LoginPage from './pages/Login'
 import RegisterPage from './pages/Register'
@@ -17,11 +21,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<HomePage />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/catalog" element={<CatalogPage />} />
           <Route path="/catalog" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/fundraiser" element={<FundraiserPage />} />
-
 
           {!isAuth ? (
             <>

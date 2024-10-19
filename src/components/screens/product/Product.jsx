@@ -33,13 +33,12 @@ const Product=()=> {
 
     const handleCardNumberChange = (e) => {
         const value = e.target.value
-            .replace(/\D/g, '') // Залишити тільки цифри
-            .replace(/(\d{4})(?=\d)/g, '$1 '); // Додати пробіли після кожних 4 цифр
-        setCardNumber(value.trim()); // Обрізаємо пробіли в кінці
+            .replace(/\D/g, '') 
+            .replace(/(\d{4})(?=\d)/g, '$1 '); 
+        setCardNumber(value.trim()); 
     };
 
     useEffect(() => {
-        // Активувати кнопку, якщо введено 19 символів (16 цифр + 3 пробіли)
         setIsButtonDisabled(cardNumber.length !== 19);
     }, [cardNumber]);
 

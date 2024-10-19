@@ -9,6 +9,7 @@ import RegisterPage from "./pages/Register";
 import FundraiserPage from "./pages/Fundraiser";
 import { useAuth } from "./hooks/useAuth";
 
+
 function App() {
   const isAuth = useAuth();
 
@@ -20,9 +21,13 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/catalog" element={<CatalogPage />} />
           <Route path="/fundraiser" element={<FundraiserPage />} />
+
           <Route path="/about" element={<AboutPage />} />
 
           <Route path="/profile" element={<Profile />} />
+
+          <Route path="/product" element={<ProductPage />} />
+
 
           {!isAuth ? (
             <>

@@ -1,6 +1,7 @@
 import Layout from './components/layout/Layout'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import HomePage from './pages/Home'
+import AboutPage from './pages/About'
 import CatalogPage from './pages/Catalog'
 import LoginPage from './pages/Login'
 import RegisterPage from './pages/Register'
@@ -19,6 +20,9 @@ function App() {
           <Route path="/catalog" element={<CatalogPage />} />
           <Route path="/catalog" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/fundraiser" element={<FundraiserPage />} />
+
+
           {!isAuth ? (
             <>
               <Route path="/auth/login" element={<LoginPage />} />

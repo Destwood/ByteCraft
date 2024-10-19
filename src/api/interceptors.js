@@ -7,12 +7,12 @@ import { AuthService } from "../services/auth/auth.service";
 import { errorCatch, getContentType } from "./api.helpers";
 
 export const axiosClassic = axios.create({
-  baseURL: "http://192.168.97.74:4200/api",
+  baseURL: "http://26.122.74.29:4200/api",
   headers: getContentType(),
 });
 
 export const instance = axios.create({
-  baseURL: "http://192.168.97.74:4200/api",
+  baseURL: "http://26.122.74.29:4200/api",
   headers: getContentType(),
 });
 

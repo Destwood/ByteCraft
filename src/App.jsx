@@ -8,6 +8,7 @@ import LoginPage from "./pages/Login";
 import RegisterPage from "./pages/Register";
 import FundraiserPage from "./pages/Fundraiser";
 import ProductPage from "./pages/Product";
+import CreateFundPage from "./pages/CreateFund/CreateFund";
 import { useAuth } from "./hooks/useAuth";
 
 function App() {
@@ -27,6 +28,10 @@ function App() {
           <Route path="/profile" element={<Profile />} />
 
           <Route path="/product" element={<ProductPage />} />
+
+          <Route path="/create" element={<CreateFundPage />} />
+          
+
 
           {!isAuth ? (
             <>

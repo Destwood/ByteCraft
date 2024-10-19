@@ -21,7 +21,7 @@ export const menu = [
   },
   {
     icon: 'MdInfo',
-    link: '/about-us',
+    link: '/about',
     title: 'Про сайт',
   },
 ]

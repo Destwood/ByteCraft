@@ -1,0 +1,25 @@
+.header{
+    font-weight: 700;
+    font-size: 32px;
+    color:#FFFFFF;
+}
+.title{
+    font-weight: 700;
+    font-size: 20px;
+    color: #70B838;
+}
+.text{
+    font-weight: 400;
+    font-size: 18px;
+    color:#FFFFFF;
+    text-align: justify;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    border-radius: 32px;
+    height: 585px;
+    background: #15151A;    
+    padding: 30px;
+}

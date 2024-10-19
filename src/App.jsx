@@ -26,6 +26,7 @@ function App() {
           <Route path="/fundraiser" element={<FundraiserPage />} />
           <Route path="/product" element={<ProductPage />} />
 
+
           {!isAuth ? (
             <>
               <Route path="/auth/login" element={<LoginPage />} />

@@ -12,7 +12,7 @@ export const axiosClassic = axios.create({
 })
 
 export const instance = axios.create({
-  baseURL: 'http://192.168.97.74:4200/api',
+  baseURL: 'http://192.168.201.179:4200/api',
   headers: getContentType(),
 })
 

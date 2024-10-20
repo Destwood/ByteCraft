@@ -11,6 +11,8 @@ import { useParams } from 'react-router-dom'
 import FundService from '../../../services/fund/fund.service'
 import { toast } from 'react-toastify'
 
+import exampleImg from "../../../assets/pickUpExample.jpg";
+
 const Fundraiser = () => {
   const { id } = useParams()
 
@@ -157,12 +159,14 @@ const Fundraiser = () => {
       <div className={classes.container}>
         <h2 className={classes.header}>Збір N</h2>
 
+
         <div className={classes['image-block']}>
           <img
             alt="photo"
             src={`http://26.122.74.29:4200/uploads/${fund.img}`}
             className={classes['image-main']}
           />
+
         </div>
 
         <div className={classes['main-info']}>
@@ -227,6 +231,13 @@ const Fundraiser = () => {
           <h3 className={classes['sub-title']}>
             Останні користувачі, які задонатили:
           </h3>
+          <div className={classes.userList}>
+            <div className={classes.user}>
+              <img
+                src={userAvatar}
+                className={classes["user-avatar"]}
+                alt="Avatar"
+              />
 
           <div className={classes.user}>
             <img
@@ -280,6 +291,7 @@ const Fundraiser = () => {
 
             <p className={classes['user-name']}> ВолонтерN</p>
             <p className={classes['user-sum']}>100 грн</p>
+
           </div>
         </div>
       </div>

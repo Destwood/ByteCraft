@@ -20,8 +20,8 @@ const CreateFundPage = () => {
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault(); // Запобігає перезавантаженню сторінки
-        console.log('Submitted Data:', formData); // Вивести дані в консоль
+        e.preventDefault(); 
+        console.log('Submitted Data:', formData); 
     };
 
   return (

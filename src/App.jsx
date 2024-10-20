@@ -12,6 +12,8 @@ import CreateFundPage from "./pages/CreateFund/CreateFund";
 import FundraiserReportPage from "./pages/FundraiserReport/FundraiserReport";
 import DonationPage from "./pages/Profile/Donation/Donation";
 import SuccesfullFundraiserPage from "./pages/SuccesfullFundraiser/SuccesfullFundraiser";
+import CreateFundraiserReportPage from "./pages/FundraiserReport/CreateReport/CreateFundraiserReport";
+import ProfileSettingsPage from "./pages/Profile/Settings/Settings";
 import { useAuth } from "./hooks/useAuth";
 
 function App() {
@@ -29,6 +31,7 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
 
           <Route path="/profile" element={<Profile />} />
+          <Route path="/profile-settings" element={<ProfileSettingsPage />} />
 
           <Route path="/fundraiser/:id" element={<FundraiserPage />} />
           <Route path="/product/:id" element={<ProductPage />} />
@@ -36,6 +39,7 @@ function App() {
           <Route path="/donates" element={<DonationPage />} />
 
           <Route path="/create" element={<CreateFundPage />} />
+          <Route path="/create-report" element={<CreateFundraiserReportPage />} />
           <Route path="/report" element={<FundraiserReportPage />} />
           <Route path="/successful-gatherings" element={<SuccesfullFundraiserPage />} />
           

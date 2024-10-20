@@ -1,29 +1,35 @@
-import React from 'react'
-import classes from './fundCart.module.scss'
-import moreIcon from '../../../assets/more-info-icon.svg'
-import statisticIcon from '../../../assets/statistic-icon.svg'
-import resultCompleteIcon from '../../../assets/result-complete-icon.svg'
+import React from "react";
+import classes from "./fundCart.module.scss";
+import moreIcon from "../../../assets/more-info-icon.svg";
+import statisticIcon from "../../../assets/statistic-icon.svg";
+import resultCompleteIcon from "../../../assets/result-complete-icon.svg";
 
-import img from '../../../assets/pickUpExample.jpg'
-import { Link } from 'react-router-dom'
+import img from "../../../assets/pickUpExample.jpg";
+import { Link } from "react-router-dom";
 
 const FundCart = ({ item }) => {
-  console.log(item)
-
+  console.log(item);
   return (
     <div className={classes.item}>
-      <img src={img} alt="fundImage" className={classes.image} />
+      <Link to={`/fundraiser/${item._id}`}>
+        <img src={`${item.img}`} alt="fundImage" className={classes.image} />
+      </Link>
 
       <div className={classes.itemInfo}>
         <div className={classes.itemBlock}>
-          <h3 className={classes.title}>{item.name}</h3>
+          <Link to={`/fundraiser/${item._id}`}>
+            <h3 className={classes.title}>{item.name}</h3>
+          </Link>
+
           <Link to={`/fundraiser/${item._id}`} className={classes.moreInfo}>
             <img src={moreIcon} alt="Icon" />
             Дізнатись більше
           </Link>
         </div>
 
-        <p>Уже зібрано: {item.currentSum} із гривень</p>
+        <p>
+          Уже зібрано: {item.currentSum} із {item.totalSum} гривень
+        </p>
 
         <div className={classes.itemBlock}>
           <h3 className={classes.title}>
@@ -38,7 +44,7 @@ const FundCart = ({ item }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FundCart
+export default FundCart;

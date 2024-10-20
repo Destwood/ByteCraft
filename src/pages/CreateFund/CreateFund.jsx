@@ -3,8 +3,10 @@ import classes from './CreateFund.module.scss'
 import imagePictogram from '../../assets/imagePictogram.svg'
 import FundService from '../../services/fund/fund.service'
 import { toast } from 'react-toastify'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 const CreateFundPage = () => {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     title: '',
     endDate: '',
@@ -39,6 +41,8 @@ const CreateFundPage = () => {
       complete: false,
       img: 'picture',
     }).then(() => toast('Збір створено успішно!'))
+
+    navigate('/home')
   }
 
   return (
@@ -89,10 +93,6 @@ const CreateFundPage = () => {
               />
             </div>
           </div>
-
-          <button className={classes.add} type="button">
-            Додати ціль
-          </button>
 
           <p>Опис збору*</p>
           <input

@@ -5,7 +5,7 @@ import statisticIcon from '../../../assets/statistic-icon.svg'
 import copyIcon from './copy-icon.svg'
 import mastercard from './mastercard.svg'
 import visa from './visa.svg'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Modal from '../../ui/modal/Modal'
 import { useParams } from 'react-router-dom'
 import FundService from '../../../services/fund/fund.service'
@@ -13,6 +13,7 @@ import { toast } from 'react-toastify'
 
 const Fundraiser = () => {
   const { id } = useParams()
+  const inputRef = useRef(null)
 
   const [progress, setProgress] = useState(50)
   const [fund, setFund] = useState({})
@@ -50,10 +51,13 @@ const Fundraiser = () => {
     setModalType(null)
   }
 
-  const handleCardSelection = () => {
+  const handleCardSelection = async sum => {
     if (selectedCard) {
       setModalType('succsess')
     }
+    const gathering = await FundService.updateSum(id, sum)
+    setFund(gathering)
+    inputRef.current.value = 0
   }
 
   const [cardNumber, setCardNumber] = useState('')
@@ -112,7 +116,7 @@ const Fundraiser = () => {
               </div>
             </div>
             <button
-              onClick={handleCardSelection}
+              onClick={() => handleCardSelection(inputRef.current.value)}
               className={classes.continueButton}
               disabled={!selectedCard}
             >
@@ -136,7 +140,7 @@ const Fundraiser = () => {
             </div>
 
             <button
-              onClick={handleCardSelection}
+              onClick={() => handleCardSelection(inputRef.current.value)}
               className={classes.continueButton}
               disabled={isButtonDisabled}
             >
@@ -171,7 +175,7 @@ const Fundraiser = () => {
           <div className={classes['main-info-block']}>
             <p>Зібрано, грн</p>
             <p>
-              ${fund?.currentSum} / ${fund?.totalSum}
+              {fund?.currentSum} / {fund?.totalSum}
             </p>
           </div>
 
@@ -196,6 +200,11 @@ const Fundraiser = () => {
               alt="Avatar"
             />
             <p className={classes['user-name']}>{fund?.user?.userName}</p>
+          </div>
+
+          <div className={classes.sum}>
+            <p>Сума донату(грн):</p>
+            <input ref={inputRef} min="0" defaultValue="0" type="number" />
           </div>
 
           <div className={classes.mainInfoBlock}>

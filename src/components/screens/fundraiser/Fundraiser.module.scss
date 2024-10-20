@@ -57,6 +57,12 @@
     overflow-y: scroll;
 }
 
+.sum {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 ::-webkit-scrollbar {
     width: 12px;
 }

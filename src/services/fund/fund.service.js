@@ -23,6 +23,13 @@ export const FundService = {
     return response.data
   },
 
+  async updateSum(id, sum) {
+    const response = await axiosClassic.put(getFundUrl(`/${id}`), {
+      currentSum: +sum,
+    })
+    return response.data
+  },
+
   async deleteFund(id) {
     const response = await axiosClassic.delete(getFundUrl(`/${id}`))
     return response.data

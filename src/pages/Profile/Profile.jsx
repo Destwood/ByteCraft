@@ -25,6 +25,13 @@ function Profile() {
           </div>
           <div className={style.infoContainer}>
             <button className={style.updateImg}>Завантажити нове фото</button>
+            <Link
+              to={'/create'}
+              style={{ width: 'max-content' }}
+              className={style.updateImg}
+            >
+              Створити збір
+            </Link>
 
             <div className={style.info}>
               <div className={style.infoHeader}>

@@ -1,57 +1,58 @@
-import classes from "./Home.module.scss";
+import classes from './Home.module.scss'
 
-import React, { useEffect, useState } from "react";
-import FundCart from "../../ui/pages/fundCart.jsx";
-import FundService from "../../../services/fund/fund.service.js";
+import React, { useEffect, useState } from 'react'
+import FundCart from '../../ui/pages/fundCart.jsx'
+import FundService from '../../../services/fund/fund.service.js'
 
 const Home = () => {
-  const [organizationFilter, setOrganizationFilter] = useState("all");
-  const [donationFilter, setDonationFilter] = useState("all");
-  const [sumRange, setSumRange] = useState("all");
+  const [organizationFilter, setOrganizationFilter] = useState('all')
+  const [donationFilter, setDonationFilter] = useState('all')
+  const [sumRange, setSumRange] = useState('all')
 
-  const [funds, setFunds] = useState([]);
+  const [funds, setFunds] = useState([])
 
   useEffect(() => {
+    console.log('1')
     const fetchFunds = async () => {
       try {
-        const data = await FundService.getFunds();
-        setFunds(data);
+        const data = await FundService.getFunds()
+        console.log(data)
+        setFunds(data)
       } catch (error) {
-        console.error("Error fetching funds:", error);
+        console.error('Error fetching funds:', error)
       }
-    };
+    }
 
-    fetchFunds();
-  }, []);
-  const handleOrganizationFilterChange = (event) => {
-    setOrganizationFilter(event.target.value);
-  };
+    fetchFunds()
+  }, [])
+  const handleOrganizationFilterChange = event => {
+    setOrganizationFilter(event.target.value)
+  }
 
-  const handleDonationFilterChange = (event) => {
-    setDonationFilter(event.target.value);
-  };
+  const handleDonationFilterChange = event => {
+    setDonationFilter(event.target.value)
+  }
 
-  const handleSumRangeChange = (event) => {
-    setSumRange(event.target.value);
-  };
+  const handleSumRangeChange = event => {
+    setSumRange(event.target.value)
+  }
 
-  const filterItems = (items) => {
-    return items.filter((item) => {
+  const filterItems = items => {
+    return items.filter(item => {
       const isOrganizationMatch =
-        organizationFilter === "all" ||
-        item.organization === organizationFilter;
+        organizationFilter === 'all' || item.organization === organizationFilter
 
       const isDonationMatch =
-        donationFilter === "all" || item.donaters <= Number(donationFilter);
+        donationFilter === 'all' || item.donaters <= Number(donationFilter)
 
       const isSumInRange =
-        sumRange === "all" || item.max_donations <= Number(sumRange);
+        sumRange === 'all' || item.max_donations <= Number(sumRange)
 
-      return isOrganizationMatch && isDonationMatch && isSumInRange;
-    });
-  };
+      return isOrganizationMatch && isDonationMatch && isSumInRange
+    })
+  }
 
-  const filteredItems = filterItems(funds);
+  const filteredItems = filterItems(funds)
 
   return (
     <div className={classes.filter}>
@@ -89,7 +90,7 @@ const Home = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

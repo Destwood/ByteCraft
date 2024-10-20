@@ -15,7 +15,7 @@ import SuccesfullFundraiserPage from "./pages/SuccesfullFundraiser/SuccesfullFun
 import { useAuth } from "./hooks/useAuth";
 
 function App() {
-  const isAuth = useAuth();
+  const isAuth = useAuth()
 
   return (
     <BrowserRouter>
@@ -30,6 +30,8 @@ function App() {
 
           <Route path="/profile" element={<Profile />} />
 
+          <Route path="/fundraiser/:id" element={<FundraiserPage />} />
+          <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/product" element={<ProductPage />} />
           <Route path="/donates" element={<DonationPage />} />
 
@@ -47,11 +49,11 @@ function App() {
           ) : (
             <Route path="/auth/login" element={<Navigate to="/home" />} />
           )}
-          <Route path="*" element={<Navigate to="/home" />} />
+          {/* <Route path="*" element={<Navigate to="/home" />} /> */}
         </Routes>
       </Layout>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App

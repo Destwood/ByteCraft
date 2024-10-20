@@ -1,13 +1,14 @@
-import React from "react";
-import classes from "./fundCart.module.scss";
-import moreIcon from "../../../assets/more-info-icon.svg";
-import statisticIcon from "../../../assets/statistic-icon.svg";
-import resultCompleteIcon from "../../../assets/result-complete-icon.svg";
+import React from 'react'
+import classes from './fundCart.module.scss'
+import moreIcon from '../../../assets/more-info-icon.svg'
+import statisticIcon from '../../../assets/statistic-icon.svg'
+import resultCompleteIcon from '../../../assets/result-complete-icon.svg'
 
-import img from "../../../assets/pickUpExample.jpg";
+import img from '../../../assets/pickUpExample.jpg'
+import { Link } from 'react-router-dom'
 
 const FundCart = ({ item }) => {
-  console.log(item);
+  console.log(item)
 
   return (
     <div className={classes.item}>
@@ -16,10 +17,10 @@ const FundCart = ({ item }) => {
       <div className={classes.itemInfo}>
         <div className={classes.itemBlock}>
           <h3 className={classes.title}>{item.name}</h3>
-          <button className={classes.moreInfo}>
+          <Link to={`/fundraiser/${item._id}`} className={classes.moreInfo}>
             <img src={moreIcon} alt="Icon" />
             Дізнатись більше
-          </button>
+          </Link>
         </div>
 
         <p>Уже зібрано: {item.currentSum} із гривень</p>
@@ -37,7 +38,7 @@ const FundCart = ({ item }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default FundCart;
+export default FundCart

@@ -92,9 +92,7 @@ const Catalog = () => {
 
             <div className={classes['item-info']}>
               <h3 className={classes.title}>{item.name}</h3>
-              <p className={classes.descrption}>
-                Ціна - {item.min_price} - {item.max_price} грн
-              </p>
+              <p className={classes.descrption}>Ціна - {item.price} грн</p>
             </div>
           </Link>
         ))}

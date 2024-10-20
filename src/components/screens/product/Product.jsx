@@ -1,209 +1,263 @@
-import classes from "./Product.module.scss"
+import classes from './Product.module.scss'
 import organizator from './organizator-photo.svg'
 import copyIcon from './copyIcon.svg'
 import locationMark from './locationMark.svg'
 import mastercard from './mastercard.svg'
 import visa from './visa.svg'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import Modal from '../../ui/modal/Modal'
+import { useParams } from 'react-router-dom'
+import CatalogService from '../../../services/catalog/catalog.service'
+import { toast } from 'react-toastify'
 
-const Product=()=> {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [modalType, setModalType] = useState(null); // null, 'first', or 'second'
-    const [selectedCard, setSelectedCard] = useState('');
-    const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+const Product = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [modalType, setModalType] = useState(null) // null, 'first', or 'second'
+  const [selectedCard, setSelectedCard] = useState('')
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true)
+  const { id } = useParams()
+  const [product, setProduct] = useState({})
 
-    const openModal = (type) => {
-        setModalType(type);
-        setIsModalOpen(true);
-    };
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const data = await CatalogService.getProductById(id)
+        console.log(data)
+        setProduct(data)
+      } catch (error) {
+        console.error('Error getting product:', error)
+      }
+    }
 
-    const closeModal = () => {
-        setIsModalOpen(false);
-        setModalType(null);
-    };
+    getProduct()
+  }, [])
 
-    const handleCardSelection = () => {
-        if (selectedCard) {
-            setModalType('succsess');
-        }
-    };
+  const openModal = type => {
+    setModalType(type)
+    setIsModalOpen(true)
+  }
 
-    const [cardNumber, setCardNumber] = useState('');
+  const closeModal = () => {
+    setIsModalOpen(false)
+    setModalType(null)
+  }
 
-    const handleCardNumberChange = (e) => {
-        const value = e.target.value
-            .replace(/\D/g, '') 
-            .replace(/(\d{4})(?=\d)/g, '$1 '); 
-        setCardNumber(value.trim()); 
-    };
+  const handleCardSelection = () => {
+    if (selectedCard) {
+      setModalType('succsess')
+    }
+  }
 
-    useEffect(() => {
-        setIsButtonDisabled(cardNumber.length !== 19);
-    }, [cardNumber]);
+  const [cardNumber, setCardNumber] = useState('')
 
-    return(
-        <>
-        {/* Modal: */}
-        <Modal isOpen={isModalOpen} onClose={closeModal}>
-            {modalType === 'first' ? (
-            <div className={classes.modalContent}>
-                <h3 className={classes.title}>Завершити операцію</h3>
-                <div className={classes.userInfo}>
+  const handleCardNumberChange = e => {
+    const value = e.target.value
+      .replace(/\D/g, '')
+      .replace(/(\d{4})(?=\d)/g, '$1 ')
+    setCardNumber(value.trim())
+  }
+
+  useEffect(() => {
+    setIsButtonDisabled(cardNumber.length !== 19)
+  }, [cardNumber])
+
+  const handleCopy = () => {
+    const currentUrl = window.location.href
+
+    navigator.clipboard
+      .writeText(currentUrl)
+      .then(() => toast.success('Посилання скопійоване'))
+  }
+
+  return (
+    <>
+      {/* Modal: */}
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        {modalType === 'first' ? (
+          <div className={classes.modalContent}>
+            <h3 className={classes.title}>Завершити операцію</h3>
+            <div className={classes.userInfo}>
+              <img src={organizator} alt="User" className={classes.avatar} />
+              <span className={classes.email}>user@gmail.com</span>
+            </div>
+            <div className={classes.paymentMethod}>
+              <p className={classes.paymentLabel}>СПОСІБ ОПЛАТИ</p>
+              <div className={classes.card}>
                 <img
-                    src={organizator} 
-                    alt="User"
-                    className={classes.avatar}
+                  src={
+                    selectedCard === 'Card 1 - **** 1234' ? visa : mastercard
+                  }
+                  alt="Card"
+                  className={classes.cardImage}
                 />
-                <span className={classes.email}>user@gmail.com</span>
-                </div>
-                <div className={classes.paymentMethod}>
-                <p className={classes.paymentLabel}>СПОСІБ ОПЛАТИ</p>
-                <div className={classes.card}>
-                    <img
-                        src={selectedCard === "Card 1 - **** 1234" ? visa : mastercard}
-                        alt="Card"
-                        className={classes.cardImage}
-                    />
-                     <select
-                        value={selectedCard}
-                        onChange={(e) => setSelectedCard(e.target.value)}
-                        className={classes.selectPayment}
-                    >
-                    <option value="" disabled>
-                        Вибрати картку
-                    </option>
-                    <option value="Card 1 - **** 1234">Card 1 - **** 1234</option>
-                    <option value="Card 2 - **** 5678">Card 2 - **** 5678</option>
-                    </select>
-                </div>
-                </div>
-                <button
-                onClick={handleCardSelection}
-                className={classes.continueButton}
-                disabled={!selectedCard}
+                <select
+                  value={selectedCard}
+                  onChange={e => setSelectedCard(e.target.value)}
+                  className={classes.selectPayment}
                 >
-                Продовжити
-                </button>
+                  <option value="" disabled>
+                    Вибрати картку
+                  </option>
+                  <option value="Card 1 - **** 1234">Card 1 - **** 1234</option>
+                  <option value="Card 2 - **** 5678">Card 2 - **** 5678</option>
+                </select>
+              </div>
             </div>
-            ) : modalType === 'second' ? (
-            <div className={classes.modalContent}>
-                <h3 className={classes.title}>Завершити операцію</h3>
-                <p className={classes.paymentLabel}>Введіть повний номер картки</p>
+            <button
+              onClick={handleCardSelection}
+              className={classes.continueButton}
+              disabled={!selectedCard}
+            >
+              Продовжити
+            </button>
+          </div>
+        ) : modalType === 'second' ? (
+          <div className={classes.modalContent}>
+            <h3 className={classes.title}>Завершити операцію</h3>
+            <p className={classes.paymentLabel}>Введіть повний номер картки</p>
 
-                <div className={classes.cardInputContainer}>
-                <input
-                    type="text"
-                    placeholder="Введіть номер картки"
-                    value={cardNumber}
-                    onChange={handleCardNumberChange}
-                    maxLength={19} 
-                    className={classes.paymentInput}
-                />
-                </div>
-
-                <button
-                onClick={handleCardSelection}
-                className={classes.continueButton}
-                disabled={isButtonDisabled}
-                >
-                Продовжити
-                </button>
+            <div className={classes.cardInputContainer}>
+              <input
+                type="text"
+                placeholder="Введіть номер картки"
+                value={cardNumber}
+                onChange={handleCardNumberChange}
+                maxLength={19}
+                className={classes.paymentInput}
+              />
             </div>
-            ) : <div className={classes.modalContent}>
-                    <h3 className={classes.title}>Вітаємо!</h3>
-                    <p className={classes.completePayment}>Успішна оплата!</p>
 
-                    <button
-                    onClick={closeModal}
-                    className={classes.continueButton}
-                    >
-                    Закрити
-                    </button>
-                </div>
-            }
-        </Modal>
-        <div className={classes.container}>  
+            <button
+              onClick={handleCardSelection}
+              className={classes.continueButton}
+              disabled={isButtonDisabled}
+            >
+              Продовжити
+            </button>
+          </div>
+        ) : (
+          <div className={classes.modalContent}>
+            <h3 className={classes.title}>Вітаємо!</h3>
+            <p className={classes.completePayment}>Успішна оплата!</p>
+
+            <button onClick={closeModal} className={classes.continueButton}>
+              Закрити
+            </button>
+          </div>
+        )}
+      </Modal>
+      <div className={classes.container}>
         {/* Main */}
-            <div className={classes.imageBlock}>
-                <img alt="photo" className={classes.imageMain}/>
-                <img alt="photo" className={classes.image}/>
-                <img alt="photo" className={classes.image}/>
-                <img alt="photo" className={classes.image}/>
-            </div>
-
-            <div className={classes.mainInfo}>
-                <h3 className={classes.name}>Товар 1</h3>
-
-                <div className={classes.mainInfoBlock}>
-                    <p>Ціна:</p> <p>150 грн</p>
-                </div>
-                
-                <div className={classes.productCode}>Код товару: 111111</div>
-
-                <p> Поставщик:</p>
-
-                <div className={classes.organizator}>
-                    <img src={organizator} className={classes.organizator} alt="Avatar" />
-                    <p className={classes.organizatorName}>Поставщик1</p>
-                </div>
-
-                <div className={classes.mainInfoBlock}>
-                <button className={classes.send} onClick={() => openModal('second')}>Замовити</button>
-                <button className={classes.gpay} onClick={() => openModal('first')}/>
-                </div>
-
-                <p>Поділитись: </p>
-                <button className={classes.copy}><img src={copyIcon} alt="Icon" />Скопіювати ссилку</button>
-            </div>
-
-             <div className={classes.info}>
-                <h3 className={classes.subTitle}>Опис товару</h3>
-                <p className={classes.aboutText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at ex vitae risus sodales bibendum sed eget ipsum. Vestibulum dictum ante quis bibendum laoreet. Pellentesque vel dapibus massa, ac congue dolor. Donec mollis mauris eu sem laoreet, ac cursus dui egestas. Donec sit amet aliquam justo, sed luctus nisi. Vestibulum ullamcorper tellus tempus mattis bibendum.</p>
-            </div>
-
-            <div className={classes.info}>
-                <h3 className={classes.subTitle}>Локації, де можна придбати товар:</h3>
-
-                <div className={classes.location}>
-                    <img src={locationMark} className={classes.locationMark} alt="Avatar" />
-                    <div className={classes.locationBlock}>
-                        <p className={classes.locationName}>Житомир</p>
-                        Вул. N, будинок M
-                    </div>
-                    <p  className={classes.locationSum}>200 грн</p>
-                </div>
-
-                <div className={classes.location}>
-                    <img src={locationMark} className={classes.locationMark} alt="Avatar" />
-                    <div className={classes.locationBlock}>
-                        <p className={classes.locationName}>Житомир</p>
-                        Вул. N, будинок M
-                    </div>
-                    <p  className={classes.locationSum}>300 грн</p>
-                </div>
-
-                <div className={classes.location}>
-                    <img src={locationMark} className={classes.locationMark} alt="Avatar" />
-                    <div className={classes.locationBlock}>
-                        <p className={classes.locationName}>Житомир</p>
-                        Вул. N, будинок M
-                    </div>
-                    <p  className={classes.locationSum}>150 грн</p>
-                </div>
-
-                <div className={classes.location}>
-                    <img src={locationMark} className={classes.locationMark} alt="Avatar" />
-                    <div className={classes.locationBlock}>
-                        <p className={classes.locationName}>Житомир</p>
-                        Вул. N, будинок M
-                    </div>
-                    <p  className={classes.locationSum}>100 грн</p>
-                </div>
-                            
-            </div>
-
+        <div className={classes.imageBlock}>
+          <img alt="photo" src={product.img} className={classes.imageMain} />
         </div>
-        </>
-)}
+
+        <div className={classes.mainInfo}>
+          <h3 className={classes.name}>{product.name}</h3>
+
+          <div className={classes.mainInfoBlock}>
+            <p>Ціна:</p> <p>{product.price} грн</p>
+          </div>
+
+          <div className={classes.productCode}>Код товару: 111111</div>
+
+          <p> Поставщик:</p>
+
+          <div className={classes.organizator}>
+            <img
+              src={organizator}
+              className={classes.organizator}
+              alt="Avatar"
+            />
+            <p className={classes.organizatorName}>
+              {product.distributor.name}
+            </p>
+          </div>
+
+          <div className={classes.mainInfoBlock}>
+            <button
+              className={classes.send}
+              onClick={() => openModal('second')}
+            >
+              Замовити
+            </button>
+            <button
+              className={classes.gpay}
+              onClick={() => openModal('first')}
+            />
+          </div>
+
+          <p>Поділитись: </p>
+          <button onClick={handleCopy} className={classes.copy}>
+            <img src={copyIcon} alt="Icon" />
+            Скопіювати ссилку
+          </button>
+        </div>
+
+        <div className={classes.info}>
+          <h3 className={classes.subTitle}>Опис товару</h3>
+          <p className={classes.aboutText}>{product.opus}</p>
+        </div>
+
+        <div className={classes.info}>
+          <h3 className={classes.subTitle}>
+            Локації, де можна придбати товар:
+          </h3>
+
+          <div className={classes.location}>
+            <img
+              src={locationMark}
+              className={classes.locationMark}
+              alt="Avatar"
+            />
+            <div className={classes.locationBlock}>
+              <p className={classes.locationName}>Житомир</p>
+              Вул. N, будинок M
+            </div>
+            <p className={classes.locationSum}>200 грн</p>
+          </div>
+
+          <div className={classes.location}>
+            <img
+              src={locationMark}
+              className={classes.locationMark}
+              alt="Avatar"
+            />
+            <div className={classes.locationBlock}>
+              <p className={classes.locationName}>Житомир</p>
+              Вул. N, будинок M
+            </div>
+            <p className={classes.locationSum}>300 грн</p>
+          </div>
+
+          <div className={classes.location}>
+            <img
+              src={locationMark}
+              className={classes.locationMark}
+              alt="Avatar"
+            />
+            <div className={classes.locationBlock}>
+              <p className={classes.locationName}>Житомир</p>
+              Вул. N, будинок M
+            </div>
+            <p className={classes.locationSum}>150 грн</p>
+          </div>
+
+          <div className={classes.location}>
+            <img
+              src={locationMark}
+              className={classes.locationMark}
+              alt="Avatar"
+            />
+            <div className={classes.locationBlock}>
+              <p className={classes.locationName}>Житомир</p>
+              Вул. N, будинок M
+            </div>
+            <p className={classes.locationSum}>100 грн</p>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
 export default Product

@@ -15,6 +15,8 @@ import SuccesfullFundraiserPage from "./pages/SuccesfullFundraiser/SuccesfullFun
 import CreateFundraiserReportPage from "./pages/FundraiserReport/CreateReport/CreateFundraiserReport";
 import ProfileSettingsPage from "./pages/Profile/Settings/Settings";
 import { useAuth } from "./hooks/useAuth";
+import CreateProductPage from "./pages/CreateProduct/CreateProduct";
+
 
 function App() {
   const isAuth = useAuth()
@@ -42,7 +44,8 @@ function App() {
           <Route path="/create-report" element={<CreateFundraiserReportPage />} />
           <Route path="/report" element={<FundraiserReportPage />} />
           <Route path="/successful-gatherings" element={<SuccesfullFundraiserPage />} />
-          
+
+          <Route path="/create-product" element={<CreateProductPage />} />          
 
 
           {!isAuth ? (

@@ -10,6 +10,7 @@ import FundraiserPage from "./pages/Fundraiser";
 import ProductPage from "./pages/Product";
 import CreateFundPage from "./pages/CreateFund/CreateFund";
 import FundraiserReportPage from "./pages/FundraiserReport/FundraiserReport";
+import DonationPage from "./pages/Profile/Donation/Donation";
 import { useAuth } from "./hooks/useAuth";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
 
           <Route path="/product" element={<ProductPage />} />
+          <Route path="/donates" element={<DonationPage />} />
 
           <Route path="/create" element={<CreateFundPage />} />
           <Route path="/report" element={<FundraiserReportPage />} />

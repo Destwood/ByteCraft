@@ -1,17 +1,17 @@
-import Layout from "./components/layout/Layout";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/Home";
-import AboutPage from "./pages/About";
-import Profile from "./pages/Profile/Profile";
-import CatalogPage from "./pages/Catalog";
-import LoginPage from "./pages/Login";
-import RegisterPage from "./pages/Register";
-import FundraiserPage from "./pages/Fundraiser";
-import ProductPage from "./pages/Product";
-import { useAuth } from "./hooks/useAuth";
+import Layout from './components/layout/Layout'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import HomePage from './pages/Home'
+import AboutPage from './pages/About'
+import Profile from './pages/Profile/Profile'
+import CatalogPage from './pages/Catalog'
+import LoginPage from './pages/Login'
+import RegisterPage from './pages/Register'
+import FundraiserPage from './pages/Fundraiser'
+import ProductPage from './pages/Product'
+import { useAuth } from './hooks/useAuth'
 
 function App() {
-  const isAuth = useAuth();
+  const isAuth = useAuth()
 
   return (
     <BrowserRouter>
@@ -26,7 +26,8 @@ function App() {
 
           <Route path="/profile" element={<Profile />} />
 
-          <Route path="/product" element={<ProductPage />} />
+          <Route path="/fundraiser/:id" element={<FundraiserPage />} />
+          <Route path="/product/:id" element={<ProductPage />} />
 
           {!isAuth ? (
             <>
@@ -36,11 +37,11 @@ function App() {
           ) : (
             <Route path="/auth/login" element={<Navigate to="/home" />} />
           )}
-          <Route path="*" element={<Navigate to="/home" />} />
+          {/* <Route path="*" element={<Navigate to="/home" />} /> */}
         </Routes>
       </Layout>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App

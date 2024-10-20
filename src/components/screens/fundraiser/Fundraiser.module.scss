@@ -1,45 +1,44 @@
-.container{
+.container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 32px;
     border-radius: 32px;
-    background:#15151A;
+    background: #15151a;
     padding: 20px;
 }
-.header{
+.header {
     font-weight: 700;
     font-size: 32px;
     line-height: 75%;
     text-transform: capitalize;
     text-align: center;
-    color:#FFFFFF;
+    color: #ffffff;
     width: 100%;
 }
-.image-block{
+.image-block {
     border-radius: 18px 18px 0 0;
     width: 50%;
-    height: 60%;
+    height: auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     padding: 10px;
 }
-.image{
+.image {
     background-color: #e2e2ea;
     margin-right: 10px;
     border-radius: 16px;
     width: 97px;
     height: 121px;
 }
-.image-main{
+.image-main {
     width: 100%;
     background-color: #e2e2ea;
     margin-bottom: 10px;
     border-radius: 16px;
-    height: 293px;
 }
-.main-info{
+.main-info {
     width: 449px;
     height: 429px;
     display: flex;
@@ -47,9 +46,9 @@
     border-radius: 16px;
     background: #242428;
     padding: 30px;
-    gap:10px;
+    gap: 10px;
 }
-.info{
+.info {
     width: 47%;
     border-radius: 16px;
     background: #242428;
@@ -67,52 +66,52 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #70B838;
+    background-color: #70b838;
     border-radius: 6px;
     border: 3px solid #242428;
 }
 
-.title{
+.title {
     font-weight: 700;
     font-size: 24px;
     line-height: 100%;
     width: 100%;
     text-align: center;
 }
-.sub-title{
+.sub-title {
     font-weight: 700;
     font-size: 18px;
     line-height: 133%;
 }
-.about-text{
+.about-text {
     font-weight: 400;
     font-size: 14px;
     line-height: 171%;
     font-variant: small-caps;
     text-align: justify;
 }
-.user{
+.user {
     display: flex;
     padding: 10px;
 }
-.user-name{
+.user-name {
     font-weight: 700;
     line-height: 200%;
     text-transform: capitalize;
     padding-left: 20px;
 }
-.user-avatar{
+.user-avatar {
     width: 43px;
     height: 43px;
 }
-.user-sum{
+.user-sum {
     padding-left: 45%;
 }
-.main-info-block{
+.main-info-block {
     display: flex;
     justify-content: space-between;
 }
-.sum{
+.sum {
     border: 2px solid #292932;
     border-radius: 50px;
     width: 402px;
@@ -123,29 +122,29 @@
     line-height: 171%;
     letter-spacing: 0.01em;
 }
-.copy{
+.copy {
     border-radius: 16px;
     width: 100%;
     height: 30px;
-    background:#ffffff;
+    background: #ffffff;
     font-weight: 400;
     font-size: 14px;
     line-height: 171%;
     color: #000;
 }
-.copy:hover{
+.copy:hover {
     background: #aca8a9;
 }
-.text{
+.text {
     line-height: 171%;
 }
-.date{
+.date {
     font-weight: 700;
     font-size: 20px;
     line-height: 120%;
-    color: #70B838;
+    color: #70b838;
 }
-.organizer-block{
+.organizer-block {
     display: flex;
     margin-left: 10px;
 }
@@ -154,7 +153,7 @@
     border-radius: 16px;
     width: 48%;
     height: 44px;
-    background: #70B838;
+    background: #70b838;
     font-weight: 700;
     font-size: 18px;
     line-height: 133%;
@@ -177,11 +176,11 @@
 }
 
 .gpay:hover {
-    background-color: #3C4043;
+    background-color: #3c4043;
 }
 
 .send:hover {
-    background-color: #8BE346;
+    background-color: #8be346;
     color: #fafafa;
 }
 
@@ -191,7 +190,7 @@
     font-weight: 700;
     font-size: 24px;
     line-height: 100%;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 // Modal
@@ -212,7 +211,7 @@
     align-items: center;
     gap: 10px;
     justify-content: center;
-    background-color: #FEFEFE;
+    background-color: #fefefe;
     border-radius: 60px;
     margin-left: 15%;
     margin-right: 15%;
@@ -262,7 +261,7 @@
 
 .continueButton {
     padding: 10px 20px;
-    background-color: #70B838;
+    background-color: #70b838;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -272,14 +271,14 @@
 }
 
 .continueButton:hover {
-    background-color: #8BE346;
+    background-color: #8be346;
     color: #fafafa;
 }
 
 .selectPayment {
     width: 100%;
     color: #ffffff;
-    background-color: #15151A;
+    background-color: #15151a;
     cursor: pointer;
 }
 
@@ -287,7 +286,7 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 200%;
-    color: #70B838;
+    color: #70b838;
     text-transform: capitalize;
     padding-left: 20px;
     align-items: center;

@@ -23,11 +23,13 @@
   width: 166px;
   height: 30px;
   background: #f0f0f0;
-
+  display: flex !important;
+  align-items: center;
   font-weight: 600;
   font-size: 12px;
   text-align: center;
-  color: #242428;
+  color: #242428 !important;
+  justify-content: center;
 }
 
 .moreInfo:hover {

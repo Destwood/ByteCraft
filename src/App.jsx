@@ -8,10 +8,12 @@ import LoginPage from './pages/Login'
 import RegisterPage from './pages/Register'
 import FundraiserPage from './pages/Fundraiser'
 import ProductPage from './pages/Product'
-import { useAuth } from './hooks/useAuth'
 import CreateFundPage from "./pages/CreateFund/CreateFund";
 import FundraiserReportPage from "./pages/FundraiserReport/FundraiserReport";
 import DonationPage from "./pages/Profile/Donation/Donation";
+import SuccesfullFundraiserPage from "./pages/SuccesfullFundraiser/SuccesfullFundraiser";
+import { useAuth } from "./hooks/useAuth";
+
 
 function App() {
   const isAuth = useAuth()
@@ -37,8 +39,9 @@ function App() {
 
           <Route path="/create" element={<CreateFundPage />} />
           <Route path="/report" element={<FundraiserReportPage />} />
- 
 
+          <Route path="/successful-gatherings" element={<SuccesfullFundraiserPage />} />
+          
           {!isAuth ? (
             <>
               <Route path="/auth/login" element={<LoginPage />} />

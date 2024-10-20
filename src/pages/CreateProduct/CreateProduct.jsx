@@ -1,17 +1,36 @@
-import React, { useState } from 'react'
-import classes from './CreateFund.module.scss'
+import React, { useEffect, useState } from 'react'
+import classes from './CreateProduct.module.scss'
 import imagePictogram from '../../assets/imagePictogram.svg'
-import FundService from '../../services/fund/fund.service'
+import CategoryService from '../../services/category/category.service'
+import CatalogService from '../../services/catalog/catalog.service'
 import { toast } from 'react-toastify'
+import { useAuth } from '../../hooks/useAuth'
 
-const CreateFundPage = () => {
+const CreateProductPage = () => {
+  const user = useAuth()
   const [formData, setFormData] = useState({
     title: '',
-    endDate: '',
-    targetAmount: '',
-    paymentDetails: '',
     description: '',
+    category: '',
+    price: 0,
   })
+  const [categories, setCategories] = useState([])
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const data = await CategoryService.getAll()
+
+        setCategories(data)
+      } catch (error) {
+        console.error('Error fetching products:', error)
+      }
+    }
+
+    fetchCategories()
+  }, [])
+
+  console.log(categories)
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -26,28 +45,29 @@ const CreateFundPage = () => {
     console.log('Submitted Data:', formData)
   }
 
+  const handleCategoryChange = event => {
+    setFormData({
+      ...formData,
+      category: event.target.value,
+    })
+  }
+
   const handleCreate = async () => {
-    await FundService.createFund({
+    await CatalogService.createProduct({
       name: formData.title,
-      g_date_start: Date.now(),
-      g_date_finish: new Date(formData.endDate),
-      totalSum: formData.targetAmount,
-      text: formData.description,
-      card_account: formData.paymentDetails,
-      currentSum: 0,
-      donaters: 0,
-      complete: false,
+      opus: formData.description,
       img: 'picture',
-    }).then(() => toast('Збір створено успішно!'))
+      price: formData.price,
+      categorytovar: formData.category,
+      distributor: user._id,
+    }).then(() => toast('Товар створено успішно!'))
   }
 
   return (
     <div className={classes.container}>
-      <h2 className={classes.title}>Створення збору</h2>
+      <h2 className={classes.title}>Створення об’яви про товар</h2>
       <form onSubmit={handleSubmit}>
-        <p className={classes.subTitle}>
-          Назва збору (Приклад: Дрони для Сил Оборони України)*
-        </p>
+        <p className={classes.subTitle}>Назва товару*</p>
         <input
           className={classes.enterText}
           name="title"
@@ -55,46 +75,39 @@ const CreateFundPage = () => {
           onChange={handleChange}
         />
         <div>
-          <div className={classes.info}>
+          <div className={classes.info} style={{ marginBottom: '20px' }}>
             <div className={classes.enterBlock}>
-              <p>Дата завершення збору</p>
-              <p>(Вкажіть дату у цифровому форматі)*</p>
+              <p>Ціна*</p>
               <input
                 className={classes.enterText}
-                name="endDate"
+                name="price"
                 value={formData.endDate}
                 onChange={handleChange}
               />
             </div>
-
-            <div className={classes.enterBlock}>
-              <p className={classes.endSum}>Кінечна грошова ціль, грн*</p>
-              <input
-                className={classes.enterText}
-                name="targetAmount"
-                value={formData.targetAmount}
-                onChange={handleChange}
-              />
-            </div>
           </div>
 
-          <div className={classes.info}>
-            <div className={classes.enterPaymentBlock}>
-              <p>Реквізити для збору (Номер карти, IBAN)*</p>
-              <input
-                className={classes.enterText}
-                name="paymentDetails"
-                value={formData.paymentDetails}
-                onChange={handleChange}
-              />
-            </div>
+          <div
+            className={classes.enterBlock}
+            style={{ marginBottom: '20px', borderBottom: '1px solid #fff' }}
+          >
+            <p style={{ marginBottom: '10px' }}>Категорія*</p>
+            <select
+              style={{ width: 'max-content', marginBottom: '20px' }}
+              id="category"
+              //   value={formData.category}
+              onChange={handleCategoryChange}
+            >
+              <option value="" disabled>
+                Виберіть категорію
+              </option>
+              {categories.map(category => (
+                <option value={category._id}>{category.name}</option>
+              ))}
+            </select>
           </div>
 
-          <button className={classes.add} type="button">
-            Додати ціль
-          </button>
-
-          <p>Опис збору*</p>
+          <p>Опис товару*</p>
           <input
             className={classes.enterText}
             name="description"
@@ -104,7 +117,7 @@ const CreateFundPage = () => {
 
           <div>
             <div className={classes.photoBlock}>
-              <p>Фото-прев’ю*</p>
+              <p>Додаткові фото</p>
               <button className={classes.photoAdd} type="button">
                 Додати фото
               </button>
@@ -156,4 +169,4 @@ const CreateFundPage = () => {
     </div>
   )
 }
-export default CreateFundPage
+export default CreateProductPage

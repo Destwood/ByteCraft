@@ -21,11 +21,6 @@ export const menu = [
   },
   {
     icon: 'MdInfo',
-    link: '/fundraiser',
-    title: 'fundraiser',
-  },
-  {
-    icon: 'MdInfo',
     link: '/about',
     title: 'Про сайт',
   },

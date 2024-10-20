@@ -170,7 +170,7 @@ const Product = () => {
               alt="Avatar"
             />
             <p className={classes.organizatorName}>
-              {product.distributor.name}
+              {product.distributor?.name}
             </p>
           </div>
 

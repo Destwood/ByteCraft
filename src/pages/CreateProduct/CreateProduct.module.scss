@@ -1,0 +1,133 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    border-radius: 32px;
+    background: #15151A;
+    padding: 20px;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 75%;
+    letter-spacing: 0em;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.subTitle {
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+}
+
+.enterText {
+    border-bottom: 1px solid #F0F0F0;
+    width: 100%;
+    margin-right: 20px;
+    padding: 10px;
+}
+
+.enterBlock {
+    display: flex;
+    flex-direction: column;
+    padding-right: 50px;
+    width: 45%;
+}
+
+.enterPaymentBlock {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+}
+
+.add {
+    border: 2px solid #F0F0F0;
+    border-radius: 60px;
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.add:hover {
+    background-color: #F0F0F0;
+    color: #000;
+}
+
+.photoBlock {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.photoAdd {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 133%;
+    border-radius: 16px;
+    width: 156px;
+    height: 44px;
+    background: #70B838;
+}
+
+.photoAdd:hover {
+    background-color: #8BE346;
+    color: #fafafa;
+}
+
+.photoContainer {
+    width: 100%;
+    border-bottom: 1px solid #F0F0F0;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.photoItem {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 220%;
+    letter-spacing: 0.01em;
+    border: 2px solid #F0F0F0;
+    border-radius: 60px;
+    width: 199px;
+    height: 39px;
+    text-align: center;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.submit {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    color: #FFFFFF;
+    border-radius: 16px;
+    width: 267px;
+    height: 44px;
+    background-color: #70B838;
+}
+
+.submit:hover {
+    background-color: #8BE346;
+    color: #fafafa;
+}
+
+.submitBlock {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.endSum {
+    padding-bottom: 15px;
+}

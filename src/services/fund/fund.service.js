@@ -1,10 +1,10 @@
-import { axiosClassic } from '../../api/interceptors'
+import axios, { axiosClassic } from '../../api/interceptors'
 import { getFundUrl } from '../../config/api.config'
 
 export const FundService = {
   async getFunds() {
     const response = await axiosClassic.get(getFundUrl(''))
-    console.log(response)
+
     return response.data
   },
 
@@ -14,7 +14,7 @@ export const FundService = {
   },
 
   async createFund(fundData) {
-    const response = await axiosClassic.post(getFundUrl(''), fundData)
+    const response = await axios.post(getFundUrl('/create'), fundData)
     return response.data
   },
 

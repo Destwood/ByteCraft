@@ -1,18 +1,22 @@
-import React from "react";
-import classes from "./fundCart.module.scss";
-import moreIcon from "../../../assets/more-info-icon.svg";
-import statisticIcon from "../../../assets/statistic-icon.svg";
-import resultCompleteIcon from "../../../assets/result-complete-icon.svg";
+import React from 'react'
+import classes from './fundCart.module.scss'
+import moreIcon from '../../../assets/more-info-icon.svg'
+import statisticIcon from '../../../assets/statistic-icon.svg'
+import resultCompleteIcon from '../../../assets/result-complete-icon.svg'
 
-import img from "../../../assets/pickUpExample.jpg";
-import { Link } from "react-router-dom";
+import img from '../../../assets/pickUpExample.jpg'
+import { Link } from 'react-router-dom'
 
 const FundCart = ({ item }) => {
-  console.log(item);
+  console.log(item)
   return (
     <div className={classes.item}>
       <Link to={`/fundraiser/${item._id}`}>
-        <img src={`${item.img}`} alt="fundImage" className={classes.image} />
+        <img
+          src={`http://26.122.74.29:4200/uploads/photo2.jpg`}
+          alt="fundImage"
+          className={classes.image}
+        />
       </Link>
 
       <div className={classes.itemInfo}>
@@ -44,7 +48,7 @@ const FundCart = ({ item }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default FundCart;
+export default FundCart

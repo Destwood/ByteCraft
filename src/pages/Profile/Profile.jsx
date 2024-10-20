@@ -1,9 +1,9 @@
-import React from "react";
-import style from "./Profile.module.scss";
+import React from 'react'
+import style from './Profile.module.scss'
 
-import defImg from "../../assets/profile.svg";
-import fix from "../../assets/fix.svg";
-import ListItem from "./ListItem/ListItem";
+import defImg from '../../assets/profile.svg'
+import fix from '../../assets/fix.svg'
+import ListItem from './ListItem/ListItem'
 
 function Profile() {
   return (
@@ -15,6 +15,7 @@ function Profile() {
           </div>
           <div className={style.infoContainer}>
             <button className={style.updateImg}>Завантажити нове фото</button>
+
             <div className={style.info}>
               <div className={style.infoHeader}>
                 <h5 className={style.infoTitle}>Name and Surname</h5>
@@ -56,7 +57,7 @@ function Profile() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Profile;
+export default Profile

@@ -4,6 +4,7 @@ import style from "./Profile.module.scss";
 import defImg from "../../assets/profile.svg";
 import fix from "../../assets/fix.svg";
 import ListItem from "./ListItem/ListItem";
+import { Link } from "react-router-dom";
 
 function Profile() {
   return (
@@ -18,9 +19,9 @@ function Profile() {
             <div className={style.info}>
               <div className={style.infoHeader}>
                 <h5 className={style.infoTitle}>Name and Surname</h5>
-                <button>
+                <Link to="/profile-settings">
                   <img src={fix} alt="" />
-                </button>
+                </Link>
               </div>
               <div className={style.infoContent}>
                 <p>User role: user</p>

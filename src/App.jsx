@@ -1,4 +1,3 @@
-
 import Layout from './components/layout/Layout'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import HomePage from './pages/Home'
@@ -10,6 +9,9 @@ import RegisterPage from './pages/Register'
 import FundraiserPage from './pages/Fundraiser'
 import ProductPage from './pages/Product'
 import { useAuth } from './hooks/useAuth'
+import CreateFundPage from "./pages/CreateFund/CreateFund";
+import FundraiserReportPage from "./pages/FundraiserReport/FundraiserReport";
+import DonationPage from "./pages/Profile/Donation/Donation";
 
 function App() {
   const isAuth = useAuth()
@@ -31,6 +33,7 @@ function App() {
           <Route path="/fundraiser/:id" element={<FundraiserPage />} />
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/product" element={<ProductPage />} />
+          <Route path="/donates" element={<DonationPage />} />
 
           <Route path="/create" element={<CreateFundPage />} />
           <Route path="/report" element={<FundraiserReportPage />} />

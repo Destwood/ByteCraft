@@ -8,6 +8,8 @@ import visa from "./visa.svg";
 import React, { useState, useEffect } from "react";
 import Modal from "../../ui/modal/Modal";
 
+import exampleImg from "../../../assets/pickUpExample.jpg";
+
 const Fundraiser = () => {
   const [progress, setProgress] = useState(50);
 
@@ -130,10 +132,7 @@ const Fundraiser = () => {
         <h2 className={classes.header}>Збір N</h2>
 
         <div className={classes["image-block"]}>
-          <img alt="photo" className={classes["image-main"]} />
-          <img alt="photo" className={classes.image} />
-          <img alt="photo" className={classes.image} />
-          <img alt="photo" className={classes.image} />
+          <img src={exampleImg} alt="photo" className={classes["image-main"]} />
         </div>
 
         <div className={classes["main-info"]}>
@@ -200,59 +199,60 @@ const Fundraiser = () => {
           <h3 className={classes["sub-title"]}>
             Останні користувачі, які задонатили:
           </h3>
+          <div className={classes.userList}>
+            <div className={classes.user}>
+              <img
+                src={userAvatar}
+                className={classes["user-avatar"]}
+                alt="Avatar"
+              />
 
-          <div className={classes.user}>
-            <img
-              src={userAvatar}
-              className={classes["user-avatar"]}
-              alt="Avatar"
-            />
+              <p className={classes["user-name"]}> ВолонтерN</p>
+              <p className={classes["user-sum"]}>100 грн</p>
+            </div>
 
-            <p className={classes["user-name"]}> ВолонтерN</p>
-            <p className={classes["user-sum"]}>100 грн</p>
-          </div>
+            <div className={classes.user}>
+              <img
+                src={userAvatar}
+                className={classes["user-avatar"]}
+                alt="Avatar"
+              />
 
-          <div className={classes.user}>
-            <img
-              src={userAvatar}
-              className={classes["user-avatar"]}
-              alt="Avatar"
-            />
+              <p className={classes["user-name"]}> ВолонтерN</p>
+              <p className={classes["user-sum"]}>100 грн</p>
+            </div>
 
-            <p className={classes["user-name"]}> ВолонтерN</p>
-            <p className={classes["user-sum"]}>100 грн</p>
-          </div>
+            <div className={classes.user}>
+              <img
+                src={userAvatar}
+                className={classes["user-avatar"]}
+                alt="Avatar"
+              />
 
-          <div className={classes.user}>
-            <img
-              src={userAvatar}
-              className={classes["user-avatar"]}
-              alt="Avatar"
-            />
+              <p className={classes["user-name"]}> ВолонтерN</p>
+              <p className={classes["user-sum"]}>100 грн</p>
+            </div>
 
-            <p className={classes["user-name"]}> ВолонтерN</p>
-            <p className={classes["user-sum"]}>100 грн</p>
-          </div>
+            <div className={classes.user}>
+              <img
+                src={userAvatar}
+                className={classes["user-avatar"]}
+                alt="Avatar"
+              />
 
-          <div className={classes.user}>
-            <img
-              src={userAvatar}
-              className={classes["user-avatar"]}
-              alt="Avatar"
-            />
+              <p className={classes["user-name"]}> ВолонтерN</p>
+              <p className={classes["user-sum"]}>100 грн</p>
+            </div>
+            <div className={classes.user}>
+              <img
+                src={userAvatar}
+                className={classes["user-avatar"]}
+                alt="Avatar"
+              />
 
-            <p className={classes["user-name"]}> ВолонтерN</p>
-            <p className={classes["user-sum"]}>100 грн</p>
-          </div>
-          <div className={classes.user}>
-            <img
-              src={userAvatar}
-              className={classes["user-avatar"]}
-              alt="Avatar"
-            />
-
-            <p className={classes["user-name"]}> ВолонтерN</p>
-            <p className={classes["user-sum"]}>100 грн</p>
+              <p className={classes["user-name"]}> ВолонтерN</p>
+              <p className={classes["user-sum"]}>100 грн</p>
+            </div>
           </div>
         </div>
       </div>

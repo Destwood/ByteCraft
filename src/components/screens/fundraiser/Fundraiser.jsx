@@ -11,6 +11,8 @@ import { useParams } from 'react-router-dom'
 import FundService from '../../../services/fund/fund.service'
 import { toast } from 'react-toastify'
 
+import exampleImg from "../../../assets/pickUpExample.jpg";
+
 const Fundraiser = () => {
   const { id } = useParams()
 
@@ -36,7 +38,7 @@ const Fundraiser = () => {
   }
 
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [modalType, setModalType] = useState(null) // null, 'first', or 'second'
+  const [modalType, setModalType] = useState(null)
   const [selectedCard, setSelectedCard] = useState('')
   const [isButtonDisabled, setIsButtonDisabled] = useState(true)
 
@@ -227,6 +229,13 @@ const Fundraiser = () => {
           <h3 className={classes['sub-title']}>
             Останні користувачі, які задонатили:
           </h3>
+          <div className={classes.userList}>
+            <div className={classes.user}>
+              <img
+                src={userAvatar}
+                className={classes["user-avatar"]}
+                alt="Avatar"
+              />
 
           <div className={classes.user}>
             <img

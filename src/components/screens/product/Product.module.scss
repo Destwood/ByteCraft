@@ -1,20 +1,21 @@
-.container{
+.container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 32px;
     border-radius: 32px;
-    background: #15151A;
+    background: #15151a;
     padding: 20px;
 }
 .imageBlock {
     border-radius: 18px 18px 0 0;
     width: 50%;
-    height: 60%;
+    // height: 60%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     padding: 10px;
+    // flex: 1 1 auto;
 }
 .image {
     background-color: #e2e2ea;
@@ -25,13 +26,13 @@
 }
 
 .imageMain {
-    width: 100%;
+    width: 80%;
     background-color: #e2e2ea;
     margin-bottom: 10px;
     border-radius: 16px;
-    height: 293px;
+    height: 400px;
 }
-.mainInfo{
+.mainInfo {
     width: 449px;
     height: 429px;
     display: flex;
@@ -49,39 +50,39 @@
     max-height: 273px;
     overflow-y: scroll;
 }
-.name{
+.name {
     font-weight: 700;
-    font-size: 32px;
+    font-size: 26px;
     line-height: 75%;
     text-transform: capitalize;
-    color:#FFFFFF;
+    color: #ffffff;
     padding-bottom: 24px;
 }
-.mainInfoBlock{
+.mainInfoBlock {
     display: flex;
     justify-content: space-between;
     font-weight: 700;
     font-size: 24px;
     line-height: 100%;
-    color: #FFFFFF;
+    color: #ffffff;
 }
-.productCode{
+.productCode {
     font-weight: 400;
     font-size: 14px;
     line-height: 171%;
-    color: #FFFFFF;
-    border-bottom: 2px solid #FFFFFF;
+    color: #ffffff;
+    border-bottom: 2px solid #ffffff;
     width: 100%;
     padding-bottom: 20px;
 }
-.organizator{
+.organizator {
     display: flex;
 }
-.organizatorName{
+.organizatorName {
     font-weight: 400;
     font-size: 18px;
     line-height: 200%;
-    color: #70B838;
+    color: #70b838;
     text-transform: capitalize;
     padding-left: 20px;
 }
@@ -89,13 +90,13 @@
     border-radius: 16px;
     width: 48%;
     height: 44px;
-    background: #70B838;
+    background: #70b838;
     font-weight: 700;
     font-size: 18px;
     line-height: 133%;
     color: #ffffff;
 }
-.gpay{
+.gpay {
     border-radius: 16px;
     width: 48%;
     height: 44px;
@@ -109,12 +110,12 @@
     padding: 12px 24px 10px;
     background-size: 65px;
 }
-.gpay:hover{
-    background-color: #3C4043;
+.gpay:hover {
+    background-color: #3c4043;
 }
 
 .send:hover {
-    background-color: #8BE346;
+    background-color: #8be346;
     color: #fafafa;
 }
 .copy {
@@ -130,40 +131,40 @@
 .copy:hover {
     background: #aca8a9;
 }
-.subTitle{
+.subTitle {
     font-weight: 700;
     font-size: 18px;
     line-height: 133%;
-    color:#FFFFFF;
+    color: #ffffff;
 }
-.aboutText{
+.aboutText {
     font-weight: 400;
     font-size: 14px;
     line-height: 171%;
     font-variant: small-caps;
     text-align: justify;
 }
-.location{
+.location {
     display: flex;
     padding: 10px;
     font-weight: 400;
     font-size: 18px;
     line-height: 133%;
 }
-.locationBlock{
+.locationBlock {
     display: flex;
     flex-direction: column;
     font-weight: 400;
     font-size: 12px;
     line-height: 200%;
 }
-.locationName{
+.locationName {
     font-weight: 400;
     font-size: 18px;
     line-height: 133%;
-    color: #70B838;
+    color: #70b838;
 }
-.locationSum{
+.locationSum {
     padding-left: 20%;
 }
 
@@ -185,7 +186,7 @@
     align-items: center;
     gap: 10px;
     justify-content: center;
-    background-color: #FEFEFE;
+    background-color: #fefefe;
     border-radius: 60px;
     margin-left: 15%;
     margin-right: 15%;
@@ -234,7 +235,7 @@
 
 .continueButton {
     padding: 10px 20px;
-    background-color: #70B838;
+    background-color: #70b838;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -242,26 +243,26 @@
     text-align: center;
     width: 100%;
 }
-.continueButton:hover{
-    background-color: #8BE346;
+.continueButton:hover {
+    background-color: #8be346;
     color: #fafafa;
 }
-.selectPayment{
+.selectPayment {
     width: 100%;
     color: #ffffff;
-    background-color: #15151A;
+    background-color: #15151a;
     cursor: pointer;
 }
-.completePayment{
+.completePayment {
     font-weight: 700;
     font-size: 18px;
     line-height: 200%;
-    color: #70B838;
+    color: #70b838;
     text-transform: capitalize;
     padding-left: 20px;
     align-items: center;
 }
-.paymentInput{
+.paymentInput {
     display: flex;
     align-items: center;
     padding: 10px;
@@ -271,6 +272,6 @@
     position: relative;
     width: 100%;
 }
-.cardInputContainer{
+.cardInputContainer {
     width: 100%;
 }

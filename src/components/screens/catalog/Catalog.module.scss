@@ -5,7 +5,7 @@
 }
 
 .header {
-    color: #FFFFFF;
+    color: #ffffff;
     font-weight: 700;
     font-size: 24px;
     letter-spacing: 0em;
@@ -51,7 +51,7 @@
     height: 60%;
     background-color: #e2e2ea;
 }
-.item-info{
+.item-info {
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -60,8 +60,11 @@
     font-weight: 700;
     line-height: 171%;
     text-transform: capitalize;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.descrption{
+.descrption {
     font-weight: 700;
     font-size: 14px;
     line-height: 171%;

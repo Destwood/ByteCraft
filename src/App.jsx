@@ -11,6 +11,7 @@ import ProductPage from "./pages/Product";
 import CreateFundPage from "./pages/CreateFund/CreateFund";
 import FundraiserReportPage from "./pages/FundraiserReport/FundraiserReport";
 import DonationPage from "./pages/Profile/Donation/Donation";
+import SuccesfullFundraiserPage from "./pages/SuccesfullFundraiser/SuccesfullFundraiser";
 import { useAuth } from "./hooks/useAuth";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
 
           <Route path="/create" element={<CreateFundPage />} />
           <Route path="/report" element={<FundraiserReportPage />} />
+          <Route path="/successful-gatherings" element={<SuccesfullFundraiserPage />} />
           
 
 

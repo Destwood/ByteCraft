@@ -31,7 +31,6 @@ function App() {
 
           <Route path="/about" element={<AboutPage />} />
 
-          <Route path="/profile" element={<Profile />} />
           <Route path="/profile-settings" element={<ProfileSettingsPage />} />
 
           <Route path="/fundraiser/:id" element={<FundraiserPage />} />
@@ -57,9 +56,14 @@ function App() {
             <>
               <Route path="/auth/login" element={<LoginPage />} />
               <Route path="/auth/register" element={<RegisterPage />} />
+              <Route path="/profile" element={<Navigate to="/auth/login" />} />
             </>
           ) : (
-            <Route path="/auth/login" element={<Navigate to="/home" />} />
+            <>
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/auth/login" element={<Navigate to="/home" />} />
+              <Route path="/auth/register" element={<Navigate to="/home" />} />
+            </>
           )}
           {/* <Route path="*" element={<Navigate to="/home" />} /> */}
         </Routes>

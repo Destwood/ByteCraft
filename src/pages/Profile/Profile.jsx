@@ -1,20 +1,21 @@
-import style from "./Profile.module.scss";
+import style from './Profile.module.scss'
 
-import defImg from "../../assets/profile.svg";
-import fix from "../../assets/fix.svg";
-import ListItem from "./ListItem/ListItem";
-import { Link } from "react-router-dom";
-import { item } from './data';
-import React, { useState } from 'react';
-
+import defImg from '../../assets/profile.svg'
+import fix from '../../assets/fix.svg'
+import ListItem from './ListItem/ListItem'
+import { Link, useNavigate } from 'react-router-dom'
+import { item } from './data'
+import React, { useState } from 'react'
+import { useAuth } from '../../hooks/useAuth'
 
 function Profile() {
-  const [count, setCount] = useState(0);
+  const user = useAuth()
+  const navigate = useNavigate()
 
-  const handleNext = () => {
-    setCount((prevCount) => (prevCount + 1) % 3);
-  };
-  
+  if (!user) {
+    navigate('/auth/login')
+  }
+
   return (
     <div className={style.container}>
       <div className={style.top}>
@@ -25,38 +26,31 @@ function Profile() {
           <div className={style.infoContainer}>
             <button className={style.updateImg}>Завантажити нове фото</button>
 
-            <button onClick={handleNext} className={style.updateImg}>Перемкнути користувача</button>
             <div className={style.info}>
               <div className={style.infoHeader}>
-                <h5 className={style.infoTitle}>Ім'я та прізвище</h5>
+                <h5 className={style.infoTitle}>{user.userName}</h5>
                 <Link to="/profile-settings">
                   <img src={fix} alt="" />
                 </Link>
               </div>
               <div className={style.infoContent}>
-                <p>Роль користувача:
-                  {count === 0 && 
-                  <>
-                    користувач
-                  </>}
-                  {count === 1 && 
-                  <>
-                    волонтер
-                  </>}
-                  {count === 2 && 
-                  <>
-                    поставщик
-                  </>}
+                <p>
+                  Роль користувача:
+                  {user.isVolonteer
+                    ? 'волонтер'
+                    : user.isDistributor
+                      ? 'поставщик'
+                      : 'користувач'}
                 </p>
-                <p>E-mail: someExample@Gmail.com</p>
+                <p>E-mail: {user.email}</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      {count === 0 && 
-      <>
-        <div className={style.middle}>
+      {user.isVolonteer ? (
+        <>
+          <div className={style.middle}>
             <div className={style.info}>
               <div className={style.dontaionInfo}>
                 <div className={style.dontaionAmount}>
@@ -82,10 +76,9 @@ function Profile() {
             </div>
           </div>
         </>
-        }
-      {count === 1 && 
+      ) : user.isDistributor ? (
         <>
-        <div className={style.middle}>
+          <div className={style.middle}>
             <div className={style.info}>
               <div className={style.dontaionInfo}>
                 <div className={style.dontaionAmount}>
@@ -109,8 +102,12 @@ function Profile() {
           </div>
 
           <div className={style.secondBlock}>
-            <button className={style.secondButtton}>Переглянути відкриті збори</button>
-            <button className={style.secondButtton}>Переглянути закриті збори</button>
+            <button className={style.secondButtton}>
+              Переглянути відкриті збори
+            </button>
+            <button className={style.secondButtton}>
+              Переглянути закриті збори
+            </button>
           </div>
 
           <div className={style.bottom}>
@@ -123,14 +120,15 @@ function Profile() {
             </div>
           </div>
         </>
-      }
-      {count === 2 && 
+      ) : (
         <>
-        <div className={style.secondBlock}>
+          <div className={style.secondBlock}>
             <button className={style.thirdButtton}>Додати товар</button>
           </div>
           <div className={style.bottom}>
-            <h3 className={style.lastestTitle}>Останні опубліковані оголошення:</h3>
+            <h3 className={style.lastestTitle}>
+              Останні опубліковані оголошення:
+            </h3>
             <div className={style.latestList}>
               <ListItem />
               <ListItem />
@@ -139,8 +137,7 @@ function Profile() {
             </div>
           </div>
         </>
-      }
-        
+      )}
     </div>
   )
 }

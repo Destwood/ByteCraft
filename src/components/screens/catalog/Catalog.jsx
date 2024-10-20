@@ -2,24 +2,34 @@ import classes from './Catalog.module.scss'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import CatalogService from '../../../services/catalog/catalog.service'
+import { CategoryService } from '../../../services/category/category.service'
 
 const Catalog = () => {
   const [priceRange, setPriceRange] = useState('all') // Стан для вибраного діапазону цін
   const [organizationFilter, setOrganizationFilter] = useState('all') // Стан для вибраної організації
   const [products, setProducts] = useState([])
+  const [categories, setCategories] = useState([])
 
   useEffect(() => {
-    console.log('1')
+    const fetchCategories = async () => {
+      try {
+        const data = await CategoryService.getAll()
+
+        setCategories(data)
+      } catch (error) {
+        console.error('Error fetching products:', error)
+      }
+    }
     const fetchProducts = async () => {
       try {
         const data = await CatalogService.getProducts()
-        console.log(data)
+
         setProducts(data)
       } catch (error) {
-        console.error('Error fetching funds:', error)
+        console.error('Error fetching products:', error)
       }
     }
-
+    fetchCategories()
     fetchProducts()
   }, [])
 
@@ -36,18 +46,14 @@ const Catalog = () => {
   // Функція для фільтрації елементів за діапазоном цін і організацією
   const filterItems = () => {
     return products.filter(item => {
-      // Перевірка фільтра за діапазоном цін
-      const [minSelectedPrice, maxSelectedPrice] =
-        priceRange !== 'all' ? priceRange.split('-').map(Number) : [null, null]
-
+      console.log(priceRange)
       const isPriceInRange =
-        priceRange === 'all' ||
-        (item.min_price >= minSelectedPrice &&
-          item.max_price <= maxSelectedPrice)
-
+        priceRange === 'all' || (item.price > 0 && item.price < priceRange)
+      console.log(item.price, isPriceInRange)
       // Перевірка фільтра за організацією
       const isOrganizationMatch =
-        organizationFilter === 'all' || item.organization === organizationFilter
+        organizationFilter === 'all' ||
+        item.categorytovar.name === organizationFilter
 
       // Повернути true, якщо обидва фільтри відповідають
       return isPriceInRange && isOrganizationMatch
@@ -65,19 +71,20 @@ const Catalog = () => {
           onChange={handleOrganizationFilterChange}
           className={classes['select-list']}
         >
-          <option value="all">Організація поки</option>
-          <option value="Організація A">Організація A</option>
-          <option value="Організація B">Організація B</option>
-          <option value="Організація C">Організація C</option>
+          <option value="all">Категорії (всі)</option>
+          {categories.map(category => (
+            <option value={category.name}>{category.name}</option>
+          ))}
         </select>
 
         <select
           className={classes['select-list']}
           onChange={handlePriceFilterChange}
         >
-          <option value="all">Ціна</option>
-          <option value="100-200">100-200</option>
-          <option value="200-300">200-300 </option>
+          <option value="all">Ціна (всі)</option>
+          <option value="2000">до 2 000 грн</option>
+          <option value="5000">до 5 000 грн</option>
+          <option value="10000">до 10 000 грн</option>
         </select>
       </div>
 

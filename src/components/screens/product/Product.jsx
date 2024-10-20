@@ -6,7 +6,7 @@ import mastercard from './mastercard.svg'
 import visa from './visa.svg'
 import React, { useState, useEffect } from 'react'
 import Modal from '../../ui/modal/Modal'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import CatalogService from '../../../services/catalog/catalog.service'
 import { toast } from 'react-toastify'
 
@@ -169,9 +169,12 @@ const Product = () => {
               className={classes.organizator}
               alt="Avatar"
             />
-            <p className={classes.organizatorName}>
+            <Link
+              to={`/user/${product.distributor?.userId}`}
+              className={classes.organizatorName}
+            >
               {product.distributor?.name}
-            </p>
+            </Link>
           </div>
 
           <div className={classes.mainInfoBlock}>

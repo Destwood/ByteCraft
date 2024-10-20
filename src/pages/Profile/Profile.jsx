@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { item } from './data';
 import React, { useState } from 'react';
 
+
 function Profile() {
   const [count, setCount] = useState(0);
 
@@ -23,6 +24,7 @@ function Profile() {
           </div>
           <div className={style.infoContainer}>
             <button className={style.updateImg}>Завантажити нове фото</button>
+
             <button onClick={handleNext} className={style.updateImg}>Перемкнути користувача</button>
             <div className={style.info}>
               <div className={style.infoHeader}>
@@ -140,7 +142,7 @@ function Profile() {
       }
         
     </div>
-  );
+  )
 }
 
-export default Profile;
+export default Profile
